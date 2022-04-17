@@ -8,7 +8,6 @@ lagConfiguration = {
 -- FPS increasing
 qualityLevel = Enum.QualityLevel.Level01; -- Up to Level21
 savedQualityLevel = Enum.SavedQualitySetting.QualityLevel1; -- Up to QualityLevel10
-videoQualitySetting = Enum.VideoQualitySettings.LowResolution; -- Gives 15/20 additional FPS, Up to HighResolution
 eagerBulkExecution = false; -- Disables unlimited budget for rendering
 -- Lag decreasing (just in case!)
 incommingReplicationLag = -1000;
