@@ -1,0 +1,215 @@
+-- Variables
+local plr = game:GetService("Players").LocalPlayer
+local raw = getrawmetatable or debug.getmetatable
+local noname = tostring(nil)
+local chr = plr.Character
+local hum = chr:FindFirstChildOfClass("Humanoid")
+
+-- AntiAntiSpeedhack
+rm.__namecall = newcclosure(function(self, ...)
+   local Method = getnamecallmethod()
+   local Beans = {...}
+   
+   if Method == "FireServer" and Beans[1] == "WalkSpeed" then
+       return nil
+   end 
+   if Method == "FireServer" and Beans[1] == "JumpPower" then
+       return nil
+   end
+   if Method == "FireServer" and Beans[1] == "HipHeight" then
+       return nil
+   end
+   return ncall(self, ...)
+end)
+setreadonly(rm, true)
+
+-- Renamer
+if plr then
+	plr.Name = noname
+end
+if hum then
+	hum.Name = noname
+end
+
+-- AntiKick
+if raw then
+	function formatargs(getArgs,v)
+		if #getArgs == 0 then 
+			return "" 
+		end
+
+		local collectArgs = {}
+		for k,v in next,getArgs do
+			local argument = ""
+			if type(v) == "string" then
+				argument = "\""..v.."\""
+			elseif type(v) == "table" then
+				argument = "{" .. formatargs(v,true) .. "}"
+			else
+				argument = tostring(v)
+			end
+			if v and type(k) ~= "number" then
+				table.insert(collectArgs,k.."="..argument)
+			else
+				table.insert(collectArgs,argument)
+			end
+		end
+		return table.concat(collectArgs, ", ")
+	end
+	
+	local antiremotes = true
+	local game_meta = raw(game)
+	local game_namecall = game_meta.__namecall
+	local game_index = game_meta.__index
+	local w = (setreadonly or fullaccess or make_writeable or changereadonly or change_writeable)
+	
+	if w then
+		pcall(w, game_meta, false)
+		game_meta__namecall = function(out, ...)
+			local args = {...}
+			local Method = args[#args]
+			args[#args] = nil
+
+			if Method == "kickPlayer" or Method == "Kick" or Method == "kick" then
+				-- print("Blocked kicking!")
+				return
+			end
+			
+			-- AntiFireRemote
+			if antiremotes then
+				print("AntiFireRemote Turned on!")
+				if Method == "FireServer" or Method == "InvokeServer" then
+					if out.Name ~= "CharacterSoundEvent" and out.Name ~= "SayMessageRequest" and out.Name ~= "AddCharacterLoadedEvent" and out.Name ~= "RemoveCharacterEvent" and out.Name ~= "DefaultServerSoundEvent" and out.Parent ~= "DefaultChatSystemChatEvents" then
+						return
+						-- print("Blocked firing/invoking remote!")
+					end
+				end
+			else
+			
+				-- AntiInvokeServer
+				if Method == "FireServer" or Method == "InvokeServer" then
+					for i,noremote in pairs(blockedremotes) do
+						if out.Name == noremote and out.Name ~= "SayMessageRequest" then
+							return
+							-- print("Blocked firing/invoking remote!")
+						end
+					end
+				end
+			end
+			return game_namecall(out, ...)
+		end
+	end
+	-- print("AntiKick: Turned on!")
+end
+
+-- AntiClientTP
+if hookfunction then
+	local TeleportService, tp, tptpi = game:GetService("TeleportService")
+	tp = hookfunction(TeleportService.Teleport, function(id, ...)
+		if allow_rj and id == game.Placeid then
+			return tp(id, ...)
+		end
+		return wait(9e9)
+	end)
+
+	tptpi = hookfunction(TeleportService.TeleportToPlaceInstance, function(id, server, ...)
+		if allow_rj and id == game.Placeid and server == game.JobId then
+			return tp(id, server, ...)
+		end
+		return wait(9e9)
+	end)
+	-- print("AntiTP: Turned on!")
+end
+
+game["Run Service"].RenderStepped:Connect(function()
+	wait()
+	game:GetService("TeleportService"):TeleportCancel()
+end)
+
+plr.OnTeleport:Connect(function()
+	game:GetService("TeleportService"):TeleportCancel()
+	-- print("Blocked teleportation!")
+end)
+
+-- AntiAFK
+local VU = game:GetService("VirtualUser")
+plr.Idled:connect(function()
+	VU:CaptureController()
+	-- print("Contoller captured!")
+	VU:MoveMouse(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+	-- print("AntiAFK prevented you from getting kicked!")
+end)
+
+-- AntiRobloxBan
+if setfflag and table and math then
+    local Chars = {};
+
+    for i = ("a"):byte(), ("z"):byte() do
+        table.insert(Chars, string.char(i));
+    end;
+
+    for i = ("A"):byte(), ("Z"):byte() do
+        table.insert(Chars, string.char(i));
+    end;
+
+    for i = ("0"):byte(), ("9"):byte() do
+        table.insert(Chars, string.char(i));
+    end;
+
+    function genstring(length)
+        local str = "";
+        for i=1, length do
+            local Random = math.random(1, #Chars);
+            str = str .. Chars[Random];
+        end
+        return str;
+    end
+    setfflag("DFStringCrashUploadToBacktraceWindowsPlayerToken_PlaceFilter", genstring(math.random(1, 1000)))
+    setfflag("DFIntCrashUploadToBacktracePercentage_PlaceFilter", genstring(math.random(1, 1337)))
+    setfflag("DFStringCrashPadUploadToBacktraceToBacktraceBaseUrl", genstring(math.random(1, 25)))
+    setfflag("DFStringCrashUploadToBacktraceMacPlayerToken", genstring(math.random(1, 75)))
+    setfflag("DFIntCrashUploadToBacktracePercentage", genstring(math.random(1, 1488)))
+    setfflag("FStringCoreScriptBacktraceErrorUploadToken", genstring(math.random(1, 75)))
+    setfflag("DFStringCrashUploadToBacktraceBlackholeToken", genstring(math.random(1, 40)))
+    setfflag("DFStringCrashUploadToBacktraceWindowsPlayerToken", genstring(math.random(1, 250)))
+    setfflag("DFFlagDebugAnalyticsForXBoxCrash", genstring(math.random(1, 85)))
+    setfflag("DFFlagDebugAnalyticsForXBoxCrashOnSuccessAlso", genstring(math.random(1, 100)))
+    setfflag("FFlagStudioCrashReportingV2Enabled", genstring(math.random(1, 125)))
+    setfflag("FFlagLocalizeVideoRecordAndScreenshotText", genstring(math.random(1, 65)))
+    setfflag("FFlagTakeAScreenshotOfThis", genstring(math.random(1, 895)))
+	setfflag("FFlagRenderScreenshotFB", genstring(math.random(1, 95)))
+	setfflag("DFFlagReportRobloxVersionForXboxCrashCount", genstring(math.random(1, 800)))
+	setfflag("DFFlagReportClientRobloxVersionToRCC", genstring(math.random(1, 1500)))
+	setfflag("DFFlagAnalyticsReportHttpStatsAtExit", genstring(math.random(1, 2500)))
+	setfflag("DFStringLightstepHTTPTransportUrl", genstring(math.random(1, 3420)))
+	setfflag("FFlagReportLuaErrorsByPlatform2", genstring(math.random(1, 9100)))
+	setfflag("FFlagCoreScriptBacktraceReportUserAgent", genstring(math.random(1, 500)))
+	setfflag("DFFlagReportClientMemoryCat", genstring(math.random(1, 400)))
+	setfflag("FFlagReportInternalUsageAnalytics", genstring(math.random(1, 700)))
+	setfflag("FFlagEnableCoreScriptBacktraceReporting", genstring(math.random(1, 10000)))
+	-- print("Done.")
+else
+	-- print("Function 'setfflag' is not supported!")
+end
+-- AntiCrasher
+game:GetService("ScriptContext"):SetTimeout(.5)
+
+-- Noclip Bypass
+local rm = getrawmetatable(game)
+local caller = checkcaller or is_protosmasher_caller
+local rindex = rm.__index
+local nindex = rm.__newindex
+local ncall = rm.__namecall
+w(rm, false)
+
+rm.__newindex = newcclosure(function(self, Meme, Val)
+	if not caller() then
+		if tostring(self) == "HumanoidRootPart" or tostring(self) == "Torso" then
+			if Meme == "CFrame" then
+				return true
+			end
+		end
+	end
+
+	return nindex(self, Meme, Val)
+end)
