@@ -1,0 +1,473 @@
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.CoreGui
+local Top = Instance.new("ImageLabel")
+local TextButton = Instance.new("TextButton")
+local Icon = Instance.new("ImageLabel")
+local Main = Instance.new("Frame")
+local Avatar = Instance.new("ImageLabel")
+local Outline = Instance.new("ImageLabel")
+local Title = Instance.new("Frame")
+local Title2 = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Health = Instance.new("TextLabel")
+local HealthIcon = Instance.new("ImageLabel")
+local Players = Instance.new("TextLabel")
+local PlayersIcon = Instance.new("ImageLabel")
+local FPS = Instance.new("TextLabel")
+local FPSIcon = Instance.new("ImageLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+
+Top.Name = "Top"
+Top.Parent = ScreenGui
+Top.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Top.BackgroundTransparency = 1.000
+Top.Position = UDim2.new(0.822222233, 0, 0.835595787, 0)
+Top.Size = UDim2.new(0, 200, 0, 15)
+Top.Image = "rbxassetid://3570695787"
+Top.ImageColor3 = Color3.fromRGB(45, 45, 45)
+Top.ScaleType = Enum.ScaleType.Slice
+Top.SliceCenter = Rect.new(100, 100, 100, 100)
+Top.SliceScale = 0.040
+
+TextButton.Parent = Top
+TextButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+TextButton.BorderColor3 = Color3.fromRGB(45, 45, 45)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.890000045, 0, 0, 0)
+TextButton.Size = UDim2.new(0, 15, 0, 15)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = ""
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 14.000
+
+Icon.Name = "Icon"
+Icon.Parent = TextButton
+Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Icon.BackgroundTransparency = 1.000
+Icon.Size = UDim2.new(0, 15, 0, 15)
+Icon.Image = "rbxassetid://7072707021"
+
+Main.Name = "Main"
+Main.Parent = Top
+Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.0145208538, 0, 0.985218763, 0)
+Main.Size = UDim2.new(0, 193, 0, 89)
+
+Avatar.Name = "Avatar"
+Avatar.Parent = Main
+Avatar.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Avatar.BackgroundTransparency = 1.000
+Avatar.BorderSizePixel = 0
+Avatar.Position = UDim2.new(0.0414507762, 0, 0.0674157292, 0)
+Avatar.Size = UDim2.new(0, 40, 0, 40)
+Avatar.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+Outline.Name = "Outline"
+Outline.Parent = Avatar
+Outline.BackgroundColor3 = Color3.fromRGB(42, 45, 255)
+Outline.BackgroundTransparency = 1.000
+Outline.BorderSizePixel = 0
+Outline.Size = UDim2.new(0, 40, 0, 40)
+Outline.Image = "rbxassetid://4031889928"
+Outline.ImageColor3 = Color3.fromRGB(45, 45, 45)
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.284974098, 0, 0.0786515102, 0)
+Title.Size = UDim2.new(0, 129, 0, 37)
+
+Title2.Name = "Title2"
+Title2.Parent = Title
+Title2.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Title2.BorderSizePixel = 0
+Title2.Position = UDim2.new(0.0447444469, 0, 0.105413586, 0)
+Title2.Size = UDim2.new(0, 117, 0, 27)
+
+TextLabel.Parent = Title2
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0, 0, 0.0126985824, 0)
+TextLabel.Size = UDim2.new(0, 117, 0, 27)
+TextLabel.Font = Enum.Font.Gotham
+TextLabel.Text = "%username%"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 20.000
+TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextWrapped = true
+
+Health.Name = "Health"
+Health.Parent = Main
+Health.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Health.BackgroundTransparency = 1.000
+Health.BorderSizePixel = 0
+Health.Position = UDim2.new(0.113989636, 0, 0.651685357, 0)
+Health.Size = UDim2.new(0, 57, 0, 28)
+Health.Font = Enum.Font.Gotham
+Health.Text = "100/100"
+Health.TextColor3 = Color3.fromRGB(255, 255, 255)
+Health.TextSize = 14.000
+Health.TextWrapped = true
+
+HealthIcon.Name = "HealthIcon"
+HealthIcon.Parent = Main
+HealthIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HealthIcon.BackgroundTransparency = 1.000
+HealthIcon.BorderSizePixel = 0
+HealthIcon.Position = UDim2.new(0.0103626922, 0, 0.696629167, 0)
+HealthIcon.Size = UDim2.new(0, 20, 0, 20)
+HealthIcon.Image = "rbxassetid://7072977617"
+
+Players.Name = "Players"
+Players.Parent = Main
+Players.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Players.BackgroundTransparency = 1.000
+Players.BorderSizePixel = 0
+Players.Position = UDim2.new(0.538860083, 0, 0.651685417, 0)
+Players.Size = UDim2.new(0, 37, 0, 28)
+Players.Font = Enum.Font.Gotham
+Players.Text = "0/20"
+Players.TextColor3 = Color3.fromRGB(255, 255, 255)
+Players.TextSize = 14.000
+Players.TextWrapped = true
+Players.TextXAlignment = Enum.TextXAlignment.Left
+
+PlayersIcon.Name = "PlayersIcon"
+PlayersIcon.Parent = Main
+PlayersIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayersIcon.BackgroundTransparency = 1.000
+PlayersIcon.BorderSizePixel = 0
+PlayersIcon.Position = UDim2.new(0.435233146, 0, 0.696629167, 0)
+PlayersIcon.Size = UDim2.new(0, 20, 0, 20)
+PlayersIcon.Image = "rbxassetid://7072724538"
+
+FPS.Name = "FPS"
+FPS.Parent = Main
+FPS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FPS.BackgroundTransparency = 1.000
+FPS.BorderSizePixel = 0
+FPS.Position = UDim2.new(0.854922295, 0, 0.651685417, 0)
+FPS.Size = UDim2.new(0, 28, 0, 28)
+FPS.Font = Enum.Font.Gotham
+FPS.Text = "60"
+FPS.TextColor3 = Color3.fromRGB(255, 255, 255)
+FPS.TextSize = 14.000
+FPS.TextWrapped = true
+FPS.TextXAlignment = Enum.TextXAlignment.Left
+
+FPSIcon.Name = "FPSIcon"
+FPSIcon.Parent = Main
+FPSIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FPSIcon.BackgroundTransparency = 1.000
+FPSIcon.BorderSizePixel = 0
+FPSIcon.Position = UDim2.new(0.730569899, 0, 0.696629167, 0)
+FPSIcon.Size = UDim2.new(0, 20, 0, 20)
+FPSIcon.Image = "rbxassetid://7072708278"
+
+TextLabel_2.Parent = Top
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.0199999996, 0, 0.133333325, 0)
+TextLabel_2.Size = UDim2.new(0, 102, 0, 11)
+TextLabel_2.Font = Enum.Font.Gotham
+TextLabel_2.Text = "InfoTab by ikottiz"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+-- Scripts:
+
+local function ISVDKVV_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	local g1 = false
+	local Button = script.Parent
+	local Frame = script.Parent.Parent.Main
+	local Avatar = Frame.Avatar
+	local Title = Frame.Title
+	Button.MouseButton1Up:Connect(function()
+		if g1 == false then 
+			Frame:TweenSize(
+				UDim2.new(0, 193,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Avatar:TweenSize(
+				UDim2.new(0, 40,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Avatar.Outline:TweenSize(
+				UDim2.new(0, 40,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title:TweenSize(
+				UDim2.new(0, 129,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title.Title2:TweenSize(
+				UDim2.new(0, 117,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title.Title2.TextLabel:TweenSize(
+				UDim2.new(0, 117,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.Players:TweenSize(
+				UDim2.new(0, 57,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.PlayersIcon:TweenSize(
+				UDim2.new(0, 20,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.Health:TweenSize(
+				UDim2.new(0, 57,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.HealthIcon:TweenSize(
+				UDim2.new(0, 20,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.FPS:TweenSize(
+				UDim2.new(0, 28,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.FPSIcon:TweenSize(
+				UDim2.new(0, 20,0, 0),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title.Title2.TextLabel.Visible = false
+			Frame.Health.Visible = false
+			Frame.FPS.Visible = false
+			Frame.Players.Visible = false
+			Button.Icon.Image = "rbxassetid://7072706838"
+			g1 = true
+		elseif g1 == true then
+			Avatar:TweenSize(
+				UDim2.new(0, 40,0, 40),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Avatar.Outline:TweenSize(
+				UDim2.new(0, 40,0, 40),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame:TweenSize(
+				UDim2.new(0, 193,0, 89),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title:TweenSize(
+				UDim2.new(0, 129,0, 37),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title.Title2:TweenSize(
+				UDim2.new(0, 117,0, 27),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title.Title2.TextLabel:TweenSize(
+				UDim2.new(0, 117,0, 27),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.Players:TweenSize(
+				UDim2.new(0, 57,0, 28),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.PlayersIcon:TweenSize(
+				UDim2.new(0, 20,0, 20),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.Health:TweenSize(
+				UDim2.new(0, 57,0, 28),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.HealthIcon:TweenSize(
+				UDim2.new(0, 20,0, 20),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.FPS:TweenSize(
+				UDim2.new(0, 28,0, 28),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Frame.FPSIcon:TweenSize(
+				UDim2.new(0, 20,0, 20),
+				"In",
+				"Quad",
+				".1",
+				false
+			)
+			Title.Title2.TextLabel.Visible = true
+			Frame.Health.Visible = true
+			Frame.FPS.Visible = true
+			Frame.Players.Visible = true
+			Button.Icon.Image = "rbxassetid://7072707021"
+			g1 = false
+		end
+	end)
+end
+coroutine.wrap(ISVDKVV_fake_script)()
+local function QHTND_fake_script() -- Avatar.AvatarImage 
+	local script = Instance.new('LocalScript', Avatar)
+
+	local avatar = script.Parent 
+	avatar.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
+end
+coroutine.wrap(QHTND_fake_script)()
+local function PCVJR_fake_script() -- TextLabel.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel)
+
+	local gui 
+	gui = script.Parent
+	gui.Text = game.Players.LocalPlayer.Name 
+	
+end
+coroutine.wrap(PCVJR_fake_script)()
+local function KDQPIMC_fake_script() -- Health.LocalScript 
+	local script = Instance.new('LocalScript', Health)
+
+	local gui 
+	gui = script.Parent
+	local humanoid = game.Players.LocalPlayer.Character:WaitForChild('Humanoid')
+	while wait() do
+		gui.Text = ""..humanoid.Health.."/"..humanoid.MaxHealth..""
+	end
+end
+coroutine.wrap(KDQPIMC_fake_script)()
+local function NFJKAZQ_fake_script() -- Players.LocalScript 
+	local script = Instance.new('LocalScript', Players)
+
+	local gui 
+	local players 
+	players = game.Players
+	gui = script.Parent
+	while wait() do
+		gui.Text = ""..#players:GetPlayers().."/"..players.MaxPlayers..""
+	end
+end
+coroutine.wrap(NFJKAZQ_fake_script)()
+local function JZKOUPE_fake_script() -- FPS.LocalScript 
+	local script = Instance.new('LocalScript', FPS)
+
+	local gui 
+	gui = script.Parent
+	local RunService = game:GetService("RunService")
+	RunService.RenderStepped:Connect(function(frame) -- This will fire every time a frame is rendered
+		gui.Text = (math.round(1/frame)) 
+	end)
+end
+coroutine.wrap(JZKOUPE_fake_script)()
+local function OFJWSJ_fake_script() -- Top.LocalScript 
+	local script = Instance.new('LocalScript', Top)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(OFJWSJ_fake_script)()
